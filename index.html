@@ -104,6 +104,15 @@ ol.pubs li{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:10px 0}
 @media (max-width:640px){.cvrow{grid-template-columns:1fr;gap:0}}
 h3{font:500 1.05rem Roboto,sans-serif;margin:24px 0 6px}
 
+/* demos */
+.demos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 12px}
+.demo{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:6px;padding:14px 16px;color:var(--text)}
+.demo:hover{background:var(--accent-soft);text-decoration:none}
+.demo b{color:var(--accent)}
+.demo-emoji{font-size:1.6rem;line-height:1}
+.demo-text{font-size:.93rem;color:var(--muted)}
+@media (max-width:640px){.demos{grid-template-columns:1fr}}
+
 footer{border-top:1px solid var(--rule);margin-top:56px;padding:18px 16px;text-align:center;font-size:.85rem;color:var(--muted)}
 </style>
 <script>
@@ -118,6 +127,7 @@ try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribu
       <li><a href="#about">about</a></li>
       <li class="hide-sm"><a href="#news">news</a></li>
       <li><a href="#publications">publications</a></li>
+      <li class="hide-sm"><a href="#demos">demos</a></li>
       <li class="hide-sm"><a href="#projects">projects</a></li>
       <li><a href="#cv">cv</a></li>
       <li><button id="theme" aria-label="Switch light or dark theme"><i class="fa-solid fa-circle-half-stroke"></i></button></li>
@@ -158,6 +168,7 @@ try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribu
   <section id="news">
     <h2>news</h2>
     <table class="news">
+      <tr><td class="date">Oct 2026</td><td>🎮 New <a href="#demos">interactive demos</a> for our work on results-aware SPARQL embeddings.</td></tr>
       <tr><td class="date">Oct 2026</td><td>📄 New preprint: <a href="https://arxiv.org/abs/2610.20247">Scaling Multilingual Mixture-of-Experts</a>, on how language coverage changes capacity and compute allocation.</td></tr>
       <tr><td class="date">2026</td><td>🏆 <b>MARS</b>, multi-hop adaptive retrieval and SPARQL generation for KGQA, accepted at <b>EKAW 2026</b> and nominated for the best paper award.</td></tr>
       <tr><td class="date">2026</td><td>🎉 Paper on document-level relation extraction with knowledge graph feedback accepted at <b>ESWC 2026</b>.</td></tr>
@@ -258,6 +269,23 @@ try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribu
         <div class="venue">K-CAP 2021</div>
       </div></li>
     </ol>
+  </section>
+
+  <section id="demos">
+    <h2>demos</h2>
+    <p>🔍 Two SPARQL queries can look almost the same but return different answers, or look very different but return the same answers. That makes plain text similarity a weak signal when you want to find, reuse or cache similar queries.</p>
+    <p>In <b>Contrastive Learning for Results-Aware SPARQL Embeddings</b>, we run queries from real query logs, label pairs of queries by how much their answers overlap, and fine-tune encoders so that queries with similar answers end up close together. At query time, only the query text is needed. These interactive demos let you explore the idea in your browser:</p>
+    <div class="demos">
+      <a class="demo" href="https://hzahera.github.io/SPARQL-Embeddings/embeddings.html">
+        <span class="demo-emoji" aria-hidden="true">🗺️</span>
+        <span><b>Results-aware embeddings</b><br><span class="demo-text">See why text similarity is a poor signal for query similarity, and compare a map of real SQuARE test queries under text-based and results-aware embeddings.</span></span>
+      </a>
+      <a class="demo" href="https://hzahera.github.io/SPARQL-Embeddings/tasks.html">
+        <span class="demo-emoji" aria-hidden="true">⚡</span>
+        <span><b>Impact on retrieval and caching</b><br><span class="demo-text">Look at real queries where text similarity retrieves the wrong query, and see how fine-tuning changes retrieval and result-cache decisions.</span></span>
+      </a>
+    </div>
+    <p class="note">Start from the <a href="https://hzahera.github.io/SPARQL-Embeddings/">demo overview</a> or browse the <a href="https://github.com/hzahera/SPARQL-Embeddings">code on GitHub</a>.</p>
   </section>
 
   <section id="projects">
